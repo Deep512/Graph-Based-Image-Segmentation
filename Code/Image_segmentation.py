@@ -35,7 +35,7 @@ back): # background area ---> should be input by the user manually.
         for j in range(I.shape[1]):
             F[i,j] = -log(abs(I[i,j] - Ifmean)/(abs(I[i,j] - Ifmean)+abs(I[i,j] - Ibmean))) # Probability of a pixel being foreground
             B[i,j] = -log(abs(I[i,j] - Ibmean)/(abs(I[i,j] - Ibmean)+abs(I[i,j] - Ifmean))) # Probability of a pixel being background
-    F,B = F.reshape(-1,1),B.reshape(-1,1) # convertingb  to column vector for ease
+    F,B = F.reshape(-1,1),B.reshape(-1,1) # converting to column vector for ease
     for i in range(Im.shape[0]):
         Im[i] = Im[i] / linalg.norm(Im[i]) # normalizing the input image vector 
     w = structure # defining the weight       
@@ -56,7 +56,7 @@ back): # background area ---> should be input by the user manually.
                                probabilty of i being foreground/sum of probabilities
                                * weight from i to a 4-neighbourhood pixel:
                                 K * e−|Ii−Ij |2 / s
-                                 where k and s are parameters that determine hwo close the neighboring pixels are how fast the values
+                                 where k and s are parameters that determine how close the neighboring pixels are and how fast the values
                                  decay towards zero with increasing dissimilarity
             '''
         if (i+1)%n != 0: # for right pixels
@@ -72,7 +72,7 @@ back): # background area ---> should be input by the user manually.
     print ("The maximum flow for %s is %d")%(file,gr) # find and print the maxflow
     Iout = ones(shape = nodes.shape)
     for i in range(len(nodes)):
-        Iout[i] = g.get_segment(nodes[i]) # calssifying each pixel as either forground or background
+        Iout[i] = g.get_segment(nodes[i]) # classifying each pixel as either forground or background
     out = 255*ones((I.shape[0],I.shape[1],3)) # initialization for 3d input
     for i in range(I.shape[0]):
         for j in range(I.shape[1]): # converting the True/False to Pixel intensity
@@ -88,6 +88,24 @@ back): # background area ---> should be input by the user manually.
     plt.show()
 
 #calling the maxflow funtion for inputs
-graph('181021.jpg',2,120,(148,105,201,165),(11,12,80,52))
-graph('bridge.jpg',2,120,(148,105,201,165),(11,12,80,52))
-graph('paris.jpg',2,120,(148,105,201,165),(11,12,80,52))
+
+graph('3063.jpg',2,120,(4,83,340,220),(1,1,2,50))
+graph('20069.jpg',2,120,(80,120,321,400),(11,10,50,150))
+graph('41006.jpg',2,120,(109,66,320,240),(0,300,150,320))
+graph('48025.jpg',2,120,(30,30,285,255),(11,10,50,150))
+graph('64061.jpg',2,120,(68,165,115,460),(1,1,75,30))
+graph('70011.jpg',2,120,(98,75,390,220),(1,1,140,450))
+graph('71076.jpg',2,120,(48,70,195,400),(1,1,30,50))
+graph('81066.jpg',2,120,(95,95,190,235),(1,1,140,450))
+graph('100007.jpg',2,120,(120,140,240,205),(1,1,140,450))
+graph('100039.jpg',2,120,(150,85,290,321),(1,1,140,450))
+graph('106005.jpg',2,120,(130,34,340,240),(1,1,120,30))
+graph('107045.jpg',2,120,(200,92,375,240),(1,1,120,30))
+graph('108036.jpg',2,120,(100,50,350,290),(1,1,75,30))
+graph('120003.jpg',2,120,(190,22,280,252),(1,1,75,30))
+graph('120093.jpg',2,120,(70,65,480,320),(1,1,75,30))
+graph('128035.jpg',2,120,(77,95,430,260),(1,1,75,90))
+graph('130066.jpg',2,120,(109,40,320,285),(1,1,80,30))
+graph('140006.jpg',2,120,(4,83,340,220),(1,1,2,50))
+graph('181021.jpg',2,120,(48,70,195,400),(1,1,30,50))
+graph('235098.jpg',2,120,(48,70,195,400),(1,1,30,50))
